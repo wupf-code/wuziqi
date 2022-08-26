@@ -8,7 +8,7 @@ import PlayGround from "@/components/PlayGround";
 import MatchGround from "@/components/MatchGround";
 import {useStore} from "vuex";
 import {onMounted, onUnmounted} from "vue";
-
+import {AC_GAME_OBJECTS} from "@/assets/scripts/AcGameObject";
 export default {
   name: "pkIndexView",
   components :{
@@ -19,9 +19,9 @@ export default {
     const store = useStore();
 
     const socketUrl = `ws://127.0.0.1:3000/websocket/${store.state.pk.user_id}`;
-
     let socket =null;
     onMounted(()=>{
+
       socket = new WebSocket(socketUrl);
       socket.onopen = () => {
         store.commit("updateSocket", socket);
@@ -30,9 +30,32 @@ export default {
       socket.onmessage = (msg) => {
         const  data =  JSON.parse(msg.data);
         if(data.event === "start-matching") {
-          store.commit("updateOpponent",data.event.opponent_id);
+          store.commit("updateOpponent",data.opponent_id);
+          store.commit("updateColor",{
+            own_color : data.own_color,
+            opponent_color : data.opponent_color,
+          });
           console.log(data);
           store.commit("updateStatus","playing");
+          store.commit("updateCanStep",data.can_next);
+        }else if(data.event === "moveown") {
+          console.log(data);
+          let gamemap = AC_GAME_OBJECTS[0];
+          store.commit("updateCanStep",data.can_next);
+          gamemap.drawChessOwn(data.own_x,data.own_y);
+          store.commit("updateOwnStep",{
+            own_x:data.own_x,
+            own_y:data.own_y,
+          })
+        } else if(data.event === "moveopponent"){
+          store.commit("updateCanStep",data.can_next);
+          console.log(data);
+          let gamemap = AC_GAME_OBJECTS[0];
+          gamemap.drawChessOpponent(data.opponent_x,data.opponent_y);
+          store.commit("updateOpponentStep",{
+            opponent_x:data.opponent_x,
+            opponent_y:data.opponent_y,
+          })
         }
       };
       socket.onclose = ()=>{
