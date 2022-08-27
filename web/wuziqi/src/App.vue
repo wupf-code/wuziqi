@@ -12,7 +12,7 @@ import {useStore} from "vuex";
       const  store = useStore();
       const userId = Math.floor(Math.random() * (1000 - 1 + 1)) + 1;
       store.commit("updateUserId",userId);
-      console.log(userId);
+      // console.log(userId);
     }
 
   }

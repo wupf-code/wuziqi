@@ -39,11 +39,11 @@ export default {
             own_color : data.own_color,
             opponent_color : data.opponent_color,
           });
-          console.log(data);
+          // console.log(data);
           store.commit("updateStatus","playing");
           store.commit("updateCanStep",data.can_next);
         }else if(data.event === "moveown") {
-          console.log(data);
+          // console.log(data);
           let gamemap = AC_GAME_OBJECTS[0];
           store.commit("updateCanStep",data.can_next);
           gamemap.drawChessOwn(data.own_x,data.own_y);
@@ -53,7 +53,7 @@ export default {
           })
         } else if(data.event === "moveopponent"){
           store.commit("updateCanStep",data.can_next);
-          console.log(data);
+          // console.log(data);
           let gamemap = AC_GAME_OBJECTS[0];
           gamemap.drawChessOpponent(data.opponent_x,data.opponent_y);
           store.commit("updateOpponentStep",{
