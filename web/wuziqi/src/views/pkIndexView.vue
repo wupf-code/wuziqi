@@ -1,11 +1,14 @@
 <template>
   <PlayGround v-if="$store.state.pk.status === 'playing'" />
   <MatchGround v-if = "$store.state.pk.status === 'matching'" />
+  <ResultBoard v-if="$store.state.pk.result !== 'none'" />
+
 </template>
 
 <script>
 import PlayGround from "@/components/PlayGround";
 import MatchGround from "@/components/MatchGround";
+import ResultBoard from "@/components/ResultBoard";
 import {useStore} from "vuex";
 import {onMounted, onUnmounted} from "vue";
 import {AC_GAME_OBJECTS} from "@/assets/scripts/AcGameObject";
@@ -14,6 +17,7 @@ export default {
   components :{
     PlayGround,
     MatchGround,
+    ResultBoard
   },
   setup(){
     const store = useStore();
@@ -56,6 +60,16 @@ export default {
             opponent_x:data.opponent_x,
             opponent_y:data.opponent_y,
           })
+        } else if(data.event === "result"){
+          store.commit("updateCanStep",data.can_next);
+          store.commit("updateResult",data.win);
+          if(data.win==="winner"){
+            let game = AC_GAME_OBJECTS[0];
+            game.drawChessOwn(data.own_x,data.own_y);
+          }else if(data.win === "loser"){
+            let game = AC_GAME_OBJECTS[0];
+            game.drawChessOpponent(data.opponent_x,data.opponent_y);
+          }
         }
       };
       socket.onclose = ()=>{

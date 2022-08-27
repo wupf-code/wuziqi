@@ -11,6 +11,7 @@ export default {
         opponent_x:null,
         opponent_y:null,
         can_next:false,
+        result:"none",
     },
     getters: {
     },
@@ -41,6 +42,9 @@ export default {
         },
         updateCanStep(state,step){
             state.can_next = step;
+        },
+        updateResult(state, result){
+            state.result = result;
         }
 
     },
