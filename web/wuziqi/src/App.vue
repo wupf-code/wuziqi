@@ -21,7 +21,7 @@ import {useStore} from "vuex";
 
 <style>
 body{
-  background-image: url("@/assets/image/background.png");
+  background-image: url("@/assets/image/01.png");
   background-size: cover;
 }
 </style>

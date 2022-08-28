@@ -30,7 +30,7 @@ public class Game extends  Thread{
             this.userID = userId;
             this.x = x;
             this.y = y;
-            System.out.println(userId +" "+ x+" " + y);
+//            System.out.println(userId +" "+ x+" " + y);
         }finally {
             lock.unlock();
         }
@@ -54,7 +54,7 @@ public class Game extends  Thread{
 
         lock.lock();
         try{
-            if(aId!=null &&userID!=null && userID.equals(aId)) {
+            if(userID != null && userID.equals(aId)) {
                 lock.lock();
                 try {
                     Chess p = new Chess(this.x,this.y);
@@ -182,7 +182,7 @@ public class Game extends  Thread{
             for (i = 1;  i < 5; i++){
                 tmp.x = p.x + xdiff * i;
                 tmp.y = p.y + ydiff * i;
-                if (!array.contains(tmp))
+                if (!containChess(array,tmp))
                     break;
                 cnt++;
             }
@@ -199,15 +199,20 @@ public class Game extends  Thread{
     }
 
     private boolean checkWin(Chess p, boolean isWhite) {
-        lock.lock();
-        try{
+//        lock.lock();
+//        try{
             boolean flag = false;
             List<Chess> array;
-            if (isWhite) {
-                array = this.mWhiteArray;
-            } else
-            {
-                array = this.mBlackArray;
+            lock.lock();
+            try {
+                if (isWhite) {
+                    array = this.mWhiteArray;
+                } else
+                {
+                    array = this.mBlackArray;
+                }
+            }finally {
+                lock.unlock();
             }
 
             if (checkByStep(p, array, 0, 1))    //左右直线判断
@@ -222,9 +227,9 @@ public class Game extends  Thread{
                 array.clear();
             }
             return flag;
-        }finally {
-            lock.unlock();
-        }
+//        }finally {
+//            lock.unlock();
+//        }
 
     }
 

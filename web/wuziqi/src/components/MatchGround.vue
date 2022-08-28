@@ -43,7 +43,7 @@ export default {
 div.match-ground{
   width:60vw;
   height: 70vh;
-  background-color: rgba(50, 50, 50, 0.1);
+  background-color: rgba(50, 50, 50, 0);
   margin: 40px auto;
 }
 
