@@ -1,5 +1,15 @@
 <template>
   <div class="home">
+    <div class="result-board">
+      <div class="result-board-text" v-if="$store.state.pk.own_color === 'black'" >
+        执黑
+      </div>
+      <div class="result-board-text" v-else-if="$store.state.pk.own_color === 'white'">
+        执白
+      </div>
+    </div>
+    <div v-if="$store.state.pk.can_next === true" style="color: black; font-weight: 400;font-size: 30px;">请落子</div>
+    <div v-else-if="$store.state.pk.can_next === false" style="color: black; font-weight: 400; font-size: 30px;">请等待对手落子</div>
       <GameMap/>
   </div>
 </template>
@@ -21,5 +31,21 @@ div.home{
   height: 70vh;
   /*background: lightgray;*/
   margin: 40px auto;
+}
+div.result-board {
+  /*height: 30vh;*/
+  /*width: 30vw;*/
+  background-color: rgba(50, 50, 50, 0);
+  position: absolute;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+div.result-board-text {
+  text-align: center;
+  color: yellow;
+  font-size: 50px;
+  font-weight: 600;
+  font-style: italic;
+  padding-top: 5vh;
 }
 </style>

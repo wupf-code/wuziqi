@@ -1,5 +1,6 @@
 <template>
   <div ref="parent" class="game-map">
+
     <canvas ref="canvas" tabindex="0"></canvas>
   </div>
 
@@ -36,6 +37,11 @@ div.game-map{
   align-items: center;
   /*background: red;*/
 }
+div.identify{
+  margin-left: 2vh;
+  margin-top: 2vh;
+}
+
 canvas{
   background-color: rgb(211,143,63);
 }

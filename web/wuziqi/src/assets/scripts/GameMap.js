@@ -11,7 +11,7 @@ export class GameMap extends AcGameObject {
         this.rows = 17;
         this.chessesown = [];
         this.chessesoppoent = [];
-
+        this.g=Array(17).fill().map(() => Array(17).fill(0));
         this.store = store;
         this.x = 0;
         this.y = 0;
@@ -50,14 +50,16 @@ export class GameMap extends AcGameObject {
 
     drawChessOwn(x, y) {
 
-            this.chessesown.push(new Chess(x, y, this, this.store.state.pk.own_color));
+            this.chessesown.push(new Chess(x, y, this.L,this, this.store.state.pk.own_color));
+            this.g[x][y]=1;
             this.canNext=false;
 
     }
 
     drawChessOpponent(x, y) {
 
-            this.chessesoppoent.push(new Chess(x, y, this, this.store.state.pk.opponent_color));
+            this.chessesoppoent.push(new Chess(x, y,this.L, this, this.store.state.pk.opponent_color));
+            this.g[x][y]=2;
             this.canNext=true;
 
 
@@ -91,7 +93,7 @@ export class GameMap extends AcGameObject {
             let c = Math.round(y / this.L);
             if (c > 0 && c < 17 && r > 0 && r < 17)
                 // this.chessesBlack.push(new Chess(c,r,this,'black'));
-                if(this.store.state.pk.can_next===true)
+                if(this.store.state.pk.can_next===true&&this.g[c][r]===0 )
                 this.store.state.pk.socket.send(JSON.stringify({
                     event: "move",
                     x: c,

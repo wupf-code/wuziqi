@@ -2,7 +2,7 @@
   <div class="match-ground">
 
       <div class="col-12" style="text-align: center;padding-top: 15vh">
-        <button type = "button" @click="click_match_btn" class="btn btn-warning">{{ match_btn_info }}</button>
+        <button type = "button" @click="click_match_btn" id="mybutton" class="btn btn-warning">{{ match_btn_info }}</button>
       </div>
 </div>
 </template>
@@ -55,5 +55,19 @@ div.user-photo > img{
 div.user-select-bot > select {
   width: 60%;
   margin: 0 auto;
+}
+button{
+  width: 40vh;
+  height: 20vh;
+  text-align: center;
+  color: red;
+  font-size: 50px;
+  font-weight: 600;
+  font-style: italic;
+}
+#mybutton{
+  background:transparent;	/*按钮背景透明*/
+  border-width:0px;	/*边框透明*/
+  outline:none;	/*点击后没边框*/
 }
 </style>
