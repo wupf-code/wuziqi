@@ -10,17 +10,34 @@
     </div>
     <div v-if="$store.state.pk.can_next === true" style="color: black; font-weight: 400;font-size: 30px;">请落子</div>
     <div v-else-if="$store.state.pk.can_next === false" style="color: black; font-weight: 400; font-size: 30px;">请等待对手落子</div>
-      <GameMap/>
+    <div><ChatField ref="chatfield"/></div>
+    <GameMap/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import GameMap from "@/components/GameMap";
+import ChatField from "@/components/ChatField";
+import {onMounted, ref} from "vue";
 export default {
   name: 'playGround',
   components: {
     GameMap,
+    ChatField,
+  },
+  setup(){
+    let chatfield = ref(null);
+    let chathistory = ref(null);
+    onMounted(()=>{
+      chathistory = chatfield.value.$refs.chathistory;
+      console.log(chathistory);
+    })
+    return {
+      chatfield,
+      chathistory,
+    }
+
   }
 }
 </script>

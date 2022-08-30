@@ -24,6 +24,17 @@ public class Game extends  Thread{
 
     private  List<Chess> mWhiteArray = new ArrayList<>();
     private  List<Chess> mBlackArray = new ArrayList<>();
+    public void receiveChat(String chat){
+        lock.lock();
+        try{
+
+            this.sendChat(chat);
+
+        }finally {
+            lock.unlock();
+        }
+
+    }
     public void receiveMessage(Integer userId, Integer x ,Integer y){
         lock.lock();
         try {
@@ -36,16 +47,23 @@ public class Game extends  Thread{
         }
     }
 
-    private boolean receive(){
-        while(true){
-            lock.lock();
-            try{
-                if((aId!=null || bId != null) &&userID!=null){
-                    return true;
-                }
-            }finally {
-                lock.unlock();
+//    private boolean judgeChat()
+//    {
+//        if(!Objects.equals(this.chat, "")){
+//            return true;
+//        }else return false;
+//    }
+
+    private boolean receive() {
+
+        lock.lock();
+        try {
+            if ((aId != null || bId != null) && userID != null) {
+                return true;
             }
+            else return false;
+        } finally {
+            lock.unlock();
         }
     }
 
@@ -233,6 +251,16 @@ public class Game extends  Thread{
 
     }
 
+    private void sendChat(String chat){
+
+            JSONObject respA = new JSONObject();
+            respA.put("event","chat");
+            respA.put("chat",chat);
+            users.get(aId).sendMessage(respA.toJSONString());
+            users.get(bId).sendMessage(respA.toJSONString());
+        }
+
+
 
     public Game(Integer aId, Integer bId) {
         this.aId = aId;
@@ -240,9 +268,12 @@ public class Game extends  Thread{
     }
     @Override
     public void run () {
-        while(!exit)
+        while(!exit){
             if(receive())
                 sendMove();
+
+        }
+
     }
 
 }

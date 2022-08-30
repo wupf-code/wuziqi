@@ -53,7 +53,7 @@ public class WebSocketServer {
     private void move(Integer userId,Integer x, Integer y){
         game.receiveMessage(userId,x,y);
     }
-
+    private void chat(String chat){game.receiveChat(chat);}
     @OnMessage
     public void onMessage(String message, Session session) {
         // 从Client接收消息
@@ -67,6 +67,8 @@ public class WebSocketServer {
             stopMatching();
         } else if("move".equals(event)){
             move(userId,data.getInteger("x"),data.getInteger("y"));
+        } else if("chat".equals(event)) {
+            chat(data.getString("message"));
         }
 
     }

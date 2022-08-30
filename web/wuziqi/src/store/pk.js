@@ -12,6 +12,7 @@ export default {
         opponent_y:null,
         can_next:false,
         result:"none",
+        chat:"",
     },
     getters: {
     },
@@ -37,7 +38,7 @@ export default {
             state.own_y = step.own_y;
         },
         updateOpponentStep(state,step) {
-            state.opponent_x = step.opponent_y;
+            state.opponent_x = step.opponent_x;
             state.opponent_y = step.opponent_y;
         },
         updateCanStep(state,step){
@@ -45,7 +46,11 @@ export default {
         },
         updateResult(state, result){
             state.result = result;
+        },
+        updateChat(state,chat){
+            state.chat = chat;
         }
+
 
     },
     actions: {
