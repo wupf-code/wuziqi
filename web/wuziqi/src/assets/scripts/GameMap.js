@@ -1,5 +1,6 @@
 import {AcGameObject} from "@/assets/scripts/AcGameObject";
 import {Chess} from "@/assets/scripts/Chess";
+import {cell} from "@/assets/scripts/cell";
 // import {Chess} from "@/assets/scripts/Chess";
 export class GameMap extends AcGameObject {
     constructor(ctx, parent, store) {
@@ -33,6 +34,7 @@ export class GameMap extends AcGameObject {
         this.add_listening_events();
         this.drawChessOpponent(this.x, this.y);
         this.drawChessOwn(this.x, this.y);
+        new cell(0,0,this);
     }
 
     update_size() {

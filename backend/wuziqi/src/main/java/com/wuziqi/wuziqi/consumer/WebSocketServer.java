@@ -75,6 +75,7 @@ public class WebSocketServer {
 
     private void stopMatching() {
         matchpool.remove(userId);
+        game.stop();
     }
 
     private void startMatching() {

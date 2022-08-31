@@ -54,8 +54,8 @@ div.result-board {
   /*width: 30vw;*/
   background-color: rgba(50, 50, 50, 0);
   position: absolute;
-  margin-left: 5px;
-  margin-top: 10px;
+  margin-right: 5vw;
+  margin-top: 5vh;
 }
 div.result-board-text {
   text-align: center;

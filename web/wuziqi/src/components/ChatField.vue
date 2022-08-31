@@ -62,7 +62,7 @@ export default {
   color: white;
   font-size: 2vh;
 
-  padding: 5px;
+  padding: 1vh;
   overflow: auto;
 }
 

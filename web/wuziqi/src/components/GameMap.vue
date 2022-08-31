@@ -36,10 +36,10 @@ div.game-map{
   align-items: center;
   /*background: red;*/
 }
-div.identify{
-  margin-left: 2vh;
-  margin-top: 2vh;
-}
+/*div.identify{*/
+/*  margin-left: 2vw;*/
+/*  margin-top: 2vh;*/
+/*}*/
 
 canvas{
   background-color: rgb(211,143,63);
