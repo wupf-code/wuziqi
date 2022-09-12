@@ -1,6 +1,8 @@
 import {AcGameObject} from "@/assets/scripts/AcGameObject";
 import {Chess} from "@/assets/scripts/Chess";
 import {cell} from "@/assets/scripts/cell";
+import {Tip} from "@/assets/scripts/tip";
+
 // import {Chess} from "@/assets/scripts/Chess";
 export class GameMap extends AcGameObject {
     constructor(ctx, parent, store) {
@@ -16,6 +18,7 @@ export class GameMap extends AcGameObject {
         this.store = store;
         this.x = 0;
         this.y = 0;
+        this.tip = null;
     }
 
 
@@ -51,16 +54,20 @@ export class GameMap extends AcGameObject {
     }
 
     drawChessOwn(x, y) {
-
+            if(this.tip!=null)
+            this.tip.destroy();
             this.chessesown.push(new Chess(x, y, this.L,this, this.store.state.pk.own_color));
+            this.tip =  new Tip(x,y,this.L,this,'green');
             this.g[x][y]=1;
             this.canNext=false;
 
     }
 
     drawChessOpponent(x, y) {
-
+        if(this.tip!=null)
+            this.tip.destroy();
             this.chessesoppoent.push(new Chess(x, y,this.L, this, this.store.state.pk.opponent_color));
+            this.tip =  new Tip(x,y,this.L,this,'green');
             this.g[x][y]=2;
             this.canNext=true;
 

@@ -33,8 +33,8 @@ public class WebSocketServer {
         // 建立连接
         this.session = session;
         userId = Integer.parseInt(token);
-        System.out.println("connected");
-        System.out.println(userId);
+//        System.out.println("connected");
+//        System.out.println(userId);
         users.put(userId,this);
     }
 
@@ -45,7 +45,7 @@ public class WebSocketServer {
             users.remove(userId);
         }
         matchpool.remove(userId);
-        System.out.println("disconnected");
+//        System.out.println("disconnected");
 
 
     }
@@ -57,9 +57,9 @@ public class WebSocketServer {
     @OnMessage
     public void onMessage(String message, Session session) {
         // 从Client接收消息
-        System.out.println("receive message");
+//        System.out.println("receive message");
         JSONObject data = JSONObject.parseObject(message);
-        System.out.println(data);
+//        System.out.println(data);
         String event = data.getString("event");
         if ("start-matching".equals(event)) {
             startMatching();
@@ -75,7 +75,6 @@ public class WebSocketServer {
 
     private void stopMatching() {
         matchpool.remove(userId);
-        game.stop();
     }
 
     private void startMatching() {

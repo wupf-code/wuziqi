@@ -96,8 +96,7 @@ public class Game extends  Thread{
                     respB.put("opponent_y", this.y);
                     respB.put("can_next",false);
                     users.get(bId).sendMessage(respB.toJSONString());
-                    exit=true;
-                    stop();
+                    this.exit=true;
                 }else {
                     JSONObject respA = new JSONObject();
                     respA.put("event", "moveown");
@@ -136,8 +135,7 @@ public class Game extends  Thread{
                     respB.put("opponent_y", this.y);
                     respB.put("can_next",false);
                     users.get(aId).sendMessage(respB.toJSONString());
-                    exit=true;
-                    stop();
+                    this.exit=true;
                 }else {
                     JSONObject respA = new JSONObject();
                     respA.put("event", "moveown");
