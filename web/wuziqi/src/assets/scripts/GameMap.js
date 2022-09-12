@@ -1,6 +1,6 @@
 import {AcGameObject} from "@/assets/scripts/AcGameObject";
 import {Chess} from "@/assets/scripts/Chess";
-import {cell} from "@/assets/scripts/cell";
+// import {cell} from "@/assets/scripts/cell";
 import {Tip} from "@/assets/scripts/tip";
 
 // import {Chess} from "@/assets/scripts/Chess";
@@ -37,7 +37,7 @@ export class GameMap extends AcGameObject {
         this.add_listening_events();
         this.drawChessOpponent(this.x, this.y);
         this.drawChessOwn(this.x, this.y);
-        new cell(0,0,this);
+        // new cell(0,0,this);
     }
 
     update_size() {
@@ -54,20 +54,24 @@ export class GameMap extends AcGameObject {
     }
 
     drawChessOwn(x, y) {
-            if(this.tip!=null)
-            this.tip.destroy();
-            this.chessesown.push(new Chess(x, y, this.L,this, this.store.state.pk.own_color));
-            this.tip =  new Tip(x,y,this.L,this,'green');
+            if(this.tip!=null){
+                this.tip.destroy();
+            }
+            if(x!=0 && y!=0)
+            this.chessesown.push(new Chess(x, y,this, this.store.state.pk.own_color));
+            this.tip =  new Tip(x,y,this,'green');
             this.g[x][y]=1;
             this.canNext=false;
 
     }
 
     drawChessOpponent(x, y) {
-        if(this.tip!=null)
-            this.tip.destroy();
-            this.chessesoppoent.push(new Chess(x, y,this.L, this, this.store.state.pk.opponent_color));
-            this.tip =  new Tip(x,y,this.L,this,'green');
+            if(this.tip!=null){
+                this.tip.destroy();
+            }
+            if(x!=0 && y!=0)
+            this.chessesoppoent.push(new Chess(x, y, this, this.store.state.pk.opponent_color));
+            this.tip =  new Tip(x,y,this,'green');
             this.g[x][y]=2;
             this.canNext=true;
 

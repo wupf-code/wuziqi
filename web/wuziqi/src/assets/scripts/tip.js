@@ -1,13 +1,12 @@
 import {AcGameObject} from "@/assets/scripts/AcGameObject";
 
 export class Tip extends AcGameObject{
-    constructor(x,y,L,gamemap,color) {
+    constructor(x,y,gamemap,color) {
         super();
         this.x = x;
         this.y = y;
         this.gamemap = gamemap;
         this.color = color;
-        this.L=L;
     }
     update() {
         this.render();
