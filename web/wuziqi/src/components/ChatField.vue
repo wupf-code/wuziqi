@@ -23,7 +23,7 @@ export default {
       chatinput.value.addEventListener("keydown", function (e) {
         if (e.keyCode == 13) {  // ENTER
           console.log(123);
-          let username = store.state.pk.own_color;
+          let username = store.state.user.username;
           let text = chatinput.value.value;
           if (text) {
             let message = username + ": " + text;

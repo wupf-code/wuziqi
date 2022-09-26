@@ -10,7 +10,7 @@
 
     <div class="result-board-btn">
       <button @click="restart" type="button" class="btn btn-warning btn-lg">
-        再来!
+        再来！
       </button>
     </div>
   </div>
@@ -18,17 +18,17 @@
 </template>
 
 <script>
-import router from "@/router";
+// import router from "@/router";
 import { useStore } from 'vuex';
 export default {
   name: "ResultBoard",
   setup() {
     const store = useStore();
-    const $router = router;
+    // const $router = router;
     const restart = () => {
       store.commit("updateStatus", "matching");
       store.commit("updateResult", "none");
-      $router.go(0)
+      // $router.go(0)
     }
 
     return {

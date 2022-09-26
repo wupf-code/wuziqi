@@ -3,9 +3,10 @@ package com.wuziqi.wuziqi.config;
 /**
  * @author: 武鹏飞
  * @user:ASUS
- * @date:2022/8/25 - 20:26
- * @projectName:wuziqi
+ * @date:2022/7/8 - 11:26
+ * @projectName:backend
  */
+
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.*;
@@ -47,3 +48,4 @@ public class CorsConfig implements Filter {
     public void destroy() {
     }
 }
+

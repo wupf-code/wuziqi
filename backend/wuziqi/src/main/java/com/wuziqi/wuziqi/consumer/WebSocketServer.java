@@ -35,6 +35,9 @@ public class WebSocketServer {
         userId = Integer.parseInt(token);
 //        System.out.println("connected");
 //        System.out.println(userId);
+//        if(!users.containsKey(userId))
+//            users.put(userId,this);
+//        else users.replace(userId, this);
         users.put(userId,this);
     }
 
