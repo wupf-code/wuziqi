@@ -10,7 +10,7 @@
     </div>
     <div v-if="$store.state.pk.can_next === true" style="color: black; font-weight: 400;font-size: 30px;">请落子</div>
     <div v-else-if="$store.state.pk.can_next === false" style="color: black; font-weight: 400; font-size: 30px;">请等待对手落子</div>
-    <div><ChatField ref="chatfield"/></div>
+    <ChatField ref="chatfield"/>
     <GameMap/>
   </div>
 </template>

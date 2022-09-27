@@ -1,7 +1,7 @@
 <template>
-<div>
-    <div ref="chathistory"  class="ac-game-chat-field-history">
-      历史
+<div >
+    <div ref="chathistory"   class="ac-game-chat-field-history">
+      历史记录
     </div>
     <input  ref="chatinput" type="text" class="ac-game-chat-field-input">
 </div>
@@ -22,7 +22,6 @@ export default {
       chats = store.state.pk.chats;
       chatinput.value.addEventListener("keydown", function (e) {
         if (e.keyCode == 13) {  // ENTER
-          console.log(123);
           let username = store.state.user.username;
           let text = chatinput.value.value;
           if (text) {
@@ -52,7 +51,7 @@ export default {
 .ac-game-chat-field-history {
   position: absolute;
   top: 66%;
-  left: 20%;
+  left: 90%;
 
   transform: translate(-50%, -50%);
 
@@ -73,10 +72,10 @@ export default {
 .ac-game-chat-field-input {
   position: absolute;
   top: 86%;
-  left: 20%;
+  left: 85%;
   transform: translate(-50%, -50%);
 
-  width: 20%;
+  width: 10%;
   height: 3vh;
 
   color: white;
