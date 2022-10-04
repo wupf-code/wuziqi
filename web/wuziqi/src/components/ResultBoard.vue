@@ -20,6 +20,8 @@
 <script>
 // import router from "@/router";
 import { useStore } from 'vuex';
+import {AC_GAME_OBJECTS} from "@/assets/scripts/AcGameObject";
+// import router from "@/router";
 export default {
   name: "ResultBoard",
   setup() {
@@ -28,7 +30,9 @@ export default {
     const restart = () => {
       store.commit("updateStatus", "matching");
       store.commit("updateResult", "none");
-      // $router.go(0)
+      AC_GAME_OBJECTS.splice(0,AC_GAME_OBJECTS.length);
+      // router.go(0);
+      // router.push({name:"pk_index"});
     }
 
     return {

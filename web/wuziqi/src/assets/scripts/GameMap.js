@@ -49,8 +49,7 @@ export class GameMap extends AcGameObject {
     update() {
         this.update_size();
         this.render();
-        // this.drawChess();
-        // this.add_listening_events();
+
     }
 
     drawChessOwn(x, y) {
@@ -74,8 +73,6 @@ export class GameMap extends AcGameObject {
             this.tip =  new Tip(x,y,this,'green');
             this.g[x][y]=2;
             this.canNext=true;
-
-
     }
 
     drawChessBoard() {
@@ -98,7 +95,6 @@ export class GameMap extends AcGameObject {
         this.ctx.canvas.focus();
 
         this.ctx.canvas.addEventListener('click', e => {
-
             this.L = (Math.min(this.parent.clientWidth / this.cols, this.parent.clientHeight / this.rows));
 
             let x = e.offsetX, y = e.offsetY;
