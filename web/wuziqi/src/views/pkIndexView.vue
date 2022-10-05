@@ -28,8 +28,8 @@ export default {
     const store = useStore();
     let playground = ref(null);
     // let chathistory = window.document.getElementById("history");
-    // const socketUrl = `wss://chess.ymswdfg.top/websocket/${store.state.pk.user_id}`;
-    const socketUrl = `ws://127.0.0.1:3000/websocket/${store.state.user.id}`;
+    const socketUrl = `wss://chess.ymswdfg.top/websocket/${store.state.pk.user_id}`;
+    // const socketUrl = `ws://127.0.0.1:3000/websocket/${store.state.user.id}`;
 
     // console.log(chathistory);
     let socket =null;

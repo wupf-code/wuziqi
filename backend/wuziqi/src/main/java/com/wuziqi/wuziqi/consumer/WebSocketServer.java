@@ -8,12 +8,14 @@ package com.wuziqi.wuziqi.consumer;
  */
 import com.alibaba.fastjson.JSONObject;
 import com.wuziqi.wuziqi.consumer.utils.Game;
+import com.wuziqi.wuziqi.consumer.utils.WebsocketUtil;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -33,6 +35,8 @@ public class WebSocketServer {
         // 建立连接
         this.session = session;
         userId = Integer.parseInt(token);
+//        InetSocketAddress remoteAddress = WebsocketUtil.getRemoteAddress(session);
+//        System.out.println("有新连接加入！" + remoteAddress);
 //        System.out.println("connected");
 //        System.out.println(userId);
 //        if(!users.containsKey(userId))

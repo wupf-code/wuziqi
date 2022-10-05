@@ -25,7 +25,7 @@ import "bootstrap/dist/js/bootstrap"
 
 <style>
 body{
-  background-image: url("@/assets/image/01.png");
+  background-image: url("@/assets/image/a.jpg");
   background-size: cover;
 }
 </style>

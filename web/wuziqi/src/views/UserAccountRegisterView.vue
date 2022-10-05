@@ -44,8 +44,8 @@ export default {
     let error_message = ref("");
     const register = ()=>{
       $.ajax({
-        url:"http://127.0.0.1:3000/api/user/account/register/",
-        // url:"https://chess.ymswdfg.top/api/user/account/register/",
+        // url:"http://127.0.0.1:3000/api/user/account/register/",
+        url:"https://chess.ymswdfg.top/api/user/account/register/",
 
         type:"post",
 
